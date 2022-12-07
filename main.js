@@ -5,6 +5,7 @@ const searchResult = document.querySelector(".searchResult");
 const moreButton = document.querySelector(".more");
 const movieDetails = document.querySelector(".movie_details");
 const closeBtn = document.querySelector(".close_btn");
+const movieContent = document.queryCommandIndeterm(".movie_content");
 
 const options = {
   method: "GET",
@@ -74,10 +75,8 @@ movieContainer.addEventListener("click", (e) => {
       const summary = data.plotSummary.text;
       let html = `
         
-            <div class="close_btn_container">
-                <button class="close_btn"><i class="fas fa-times"></i></button>
-            </div>
-            <div class="movieContent">
+          
+            
                 <h3>${title}</h3>
 
                 <ul>
@@ -86,10 +85,12 @@ movieContainer.addEventListener("click", (e) => {
                     <li>Genre: ${genre}</li>
                     <li>Summary: ${summary}</li>
                 </ul>
-            </div>
+           
         `;
 
-      movieDetails.innerText = html;
+      movieContent.innerHTML = html;
+      console.log(html);
+
       movieDetails.classList.add("showDetails");
     })
     .catch((err) => console.error(err));
