@@ -17,6 +17,7 @@ const options = {
 searchBtn.addEventListener("click", () => {
   const searchInputText = searchInput.value.trim();
   if (!searchInputText) return;
+
   fetch(
     `https://online-movie-database.p.rapidapi.com/auto-complete?q=${searchInputText}`,
     options
@@ -59,7 +60,7 @@ movieContainer.addEventListener("click", (e) => {
   e.preventDefault();
   if (!e.target.classList.contains("more")) return;
   const imageDivId = document.querySelector(".image");
-  console.log(imageDivId);
+  console.log(imageDivId.id);
   fetch(
     `https://online-movie-database.p.rapidapi.com/title/get-overview-details?tconst=${imageDivId.id}&currentCountry=US`,
     options
@@ -69,7 +70,7 @@ movieContainer.addEventListener("click", (e) => {
       const title = data.title.title;
       const movieType = data.title.titleType;
       const rating = data.ratings.rating;
-      const genre = data.genres.toString();
+      const genre = data.genres;
       const summary = data.plotSummary.text;
       let html = `
         
@@ -88,7 +89,7 @@ movieContainer.addEventListener("click", (e) => {
             </div>
         `;
 
-      movieDetails.innerHTML = html;
+      movieDetails.innerText = html;
       movieDetails.classList.add("showDetails");
     })
     .catch((err) => console.error(err));
@@ -98,4 +99,8 @@ movieDetails.addEventListener("click", (e) => {
   if (e.target.classList.contains("fas")) {
     movieDetails.classList.remove("showDetails");
   }
+});
+
+window.addEventListener("keydown", (e) => {
+  if (e.key === "Enter") searchBtn.click();
 });
