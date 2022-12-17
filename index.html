@@ -18,51 +18,52 @@
   </head>
 
   <body>
-    <div class="container">
-      <header class="header_container">
+    <main class="container">
+      <section class="title">
         <h1>Riel</h1>
-        <div class="input_section">
-          <input
-            type="text"
-            class="search_input"
-            placeholder="search for movies, Tv-Series, etc..."
-          />
-          <button class="search_btn">
-            <i class="fas fa-search"></i>
-          </button>
-        </div>
-        <div class="searchResult"></div>
-      </header>
-      <div class="movies_container">
-        <!-- <div class="image" id="">
-          <img
-            src="img/samuel-regan-asante-wMkaMXTJjlQ-unsplash.jpg"
-            alt=""
-            srcset=""
-          />
+      </section>
+
+      <section class="searchBar">
+        <input
+          type="text"
+          class="searchBar_input"
+          autocomplete="off"
+          placeholder="search for movies, Tv-series, etc..."
+        />
+        <button class="searchBar_button">
+          <i class="fas fa-search"></i>
+          <i class="fas fa-sync fa-spin none"></i>
+        </button>
+      </section>
+      <section class="searchResultContainer">
+        <p class="searchResult"></p>
+      </section>
+      <section class="movieContainer">
+        <!-- <div class="movieDisplay">
+           <img src="img/samuel-regan-asante-wMkaMXTJjlQ-unsplash.jpg" alt="" />
           <ul>
             <li>movie</li>
-            <li>yr</li>
+            <li>yrs</li>
             <li><a href="" class="more">more...</a></li>
           </ul>
         </div> -->
-        <div class="movie_details">
-          <div class="close_btn_container">
-            <button type="button" class="close_btn">
-              <i class="fas fa-times"></i>
-            </button>
-          </div>
-          <!-- <div class="movieContent"></div>
-          <h3>Name</h3>
-
+      </section>
+      <section class="movieDetails">
+        <div class="closeBtnContainer">
+          <button class="closeBtn">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+        <div class="movieContent">
+          <!--  <h3>Name</h3>
           <ul>
             <li>Name</li>
             <li>type</li>
             <li>genre</li>
             <li>summary</li>
-          </ul>
-        </div> -->
-      </div>
-    </div>
+          </ul> -->
+        </div>
+      </section>
+    </main>
   </body>
 </html>
