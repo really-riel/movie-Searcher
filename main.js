@@ -19,6 +19,7 @@ searchBtn.addEventListener("click", () => {
   const searchInputText = searchInput.value.trim();
   if (!searchInputText) return;
   const searchIcon = document.querySelector(".fa-search");
+  searchIcon.classList.remove("bounce-top");
   const spinIcon = document.querySelector(".fa-spin");
   const animateButton = () => {
     searchIcon.classList.toggle("none");
@@ -26,7 +27,7 @@ searchBtn.addEventListener("click", () => {
     spinIcon.classList.toggle("none");
   };
   animateButton();
-  setTimeout(animateButton, 3000);
+  setTimeout(animateButton, 5000);
   console.log(searchBtn);
 
   fetch(
@@ -35,6 +36,7 @@ searchBtn.addEventListener("click", () => {
   )
     .then((response) => response.json())
     .then((data) => {
+      console.log(data);
       console.log(data.d);
       let movies = "";
       if (data.d) {
@@ -56,14 +58,14 @@ searchBtn.addEventListener("click", () => {
                 <ul>
                     <li>${movie.l}</li>
                     <li>${movie.y}</li>
-                    <li><a href="" class="more">more...</a></li>
+                    <li class="heartbeat"><a href="" class="more">more...</a></li>
                 </ul>
             </div>`;
         });
         movieContainer.innerHTML = movies;
       } else {
         const word = `Sorry couldn't find anything on ${searchInput}`;
-        movieContainer.innerHTML = word;
+        movieContainer.innerText = word;
       }
     })
     .catch((err) => console.error(err));
@@ -112,7 +114,10 @@ movieContainer.addEventListener("click", (e) => {
 });
 
 closeBtn.addEventListener("click", (e) => {
-  movieDetails.classList.remove("block");
+  movieContent.classList.add("swing-out-top-fwd");
+  setTimeout(() => {
+    movieDetails.classList.remove("block");
+  }, 1250);
 });
 
 window.addEventListener("keydown", (e) => {
